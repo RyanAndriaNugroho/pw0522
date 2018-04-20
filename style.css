@@ -1,41 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    padding: 10px 15px;
+    background: #c0c1ce;
+}
 .header
 	{
 		background-color: #27dbe5;
-    	padding: 20px;
+        margin: 50px;
+    	padding: 10px;
     	text-align: center
 	}
 .header h1
 	{
 		font-size: 50px;
 	}
-.menu 
+.topnav 
 	{
     	overflow: hidden;
     	background-color: #333;
-	}
-.menu a 
+        margin:50px;
+        padding: 10px;
+    }
+.topnav a 
 	{
 	float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 10px;
     text-decoration: none
 	}
-.menu a:hover 
+.topnav a:hover 
 	{
     
     background-color: #ddd;
     color: black;
 }
-.baris:after {
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 50px;
+}
+
+/* Left and right column */
+.column.side {
+    width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
     content: "";
     display: table;
     clear: both;
-    background-color: #d6fafc
-
 }
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
     .column {
         width: 100%;
     }
+}
+/* Style the footer */
+.footer {
+    background-color: #f1f1f1;
+    padding: 50px;
+    text-align: center;
+}
