@@ -3,53 +3,51 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module("MyApp", ["ngRoute"]);
+		app.config(function($routeProvider){
+			 $routeProvider.when('/main', {templateUrl : 'main.htm'})
+			 .when('/About', {templateUrl : 'About.htm'})
+			 .when('/Product', {templateUrl : 'Product.htm'})
+			 .when('/Contact', {templateUrl : 'Contact.htm'});
+		});
+
+	</script>
 </head>
 
 <body>
 
-<div class="container">
-	<div class="row header">
-		<div class="col-12">
-		<h1>Ini Web Burung</h1>
-		<i class="fab fa-android"></i>
-			
+<div ng-app="MyApp" class="container-fluid">	
+	<div class="container">
+		<div class="row header">
+			<div class="col-12">
+				<h1>Ini Web Burung</h1>
+				<i class="fab fa-android"></i>	
+			</div>
+		</div>
+		<div class="row menu">
+			<div class="col-12">
+			<a href="#/!main">HOME</a>::
+			<a href="#/!About">About</a>::
+			<a href="#/!Product">Product</a>::
+			<a href="#/!Contact" style="float:right">Contact</a>
+			</div>	
 		</div>
 		
-	</div>
-	<div class="row menu">
-		<div class="col-12">
-		<a href="#">ART</a>
-		<a href="#">SPORT</a>
-		<a href="#">ALAM</a>
-		<a href="#" style="float:right">MENU</a>
-			
-		</div>
-		
-	</div>
-	<div class="row">
-		<div class="col-4 text-center">
-		<h1><i class="fas fa-dove"></i></h1>
-		<button type="button" class="btn btn-secondary">Pekok</button>
-		<p>Jangan klik burung</p>
-			
-		</div>
-		<div class="col-4 text-center">
-			<h1><i class="fas fa-dove"></i></h1>
-			<button type="button" class="btn btn-secondary">Ngeyel</button>
-			<p>Jangan klik burung</p>
-		</div>
-		<div class="col-4 text-center">
-			<h1><i class="fas fa-dove"></i></h1>
-			<button type="button" class="btn btn-secondary">Kotok</button>
-			<p>Jangan klik burung</p>
-		</div>
-		
-	</div>
-	
+	</div>	
 </div>
+	<ng-view></ng-view>
+	
+
 
 
 </body>
