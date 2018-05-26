@@ -3,8 +3,9 @@
 <html>
 
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -15,10 +16,29 @@
 	<script type="text/javascript">
 		var app = angular.module("MyApp", ["ngRoute"]);
 		app.config(function($routeProvider){
-			 $routeProvider.when('/main', {templateUrl : 'main.htm'})
-			 .when('/About', {templateUrl : 'About.htm'})
-			 .when('/Product', {templateUrl : 'Product.htm'})
-			 .when('/Contact', {templateUrl : 'Contact.htm'});
+			 $routeProvider
+			 .when('/', {
+			 	templateUrl : 'main.htm'
+			 })
+			 .when('/About', {
+			 	templateUrl : 'About.htm'
+			 })
+			 .when('/Product', {
+			 	templateUrl : 'weather.htm',
+			 	controller: 'weatherCtrl'
+			 })
+			 .when('/Contact', {
+			 	templateUrl : 'Contact.htm'
+			 })
+		});
+
+		app.controller('weatherCtrl', function($scope){
+			var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=4de4dd041e499ca8a4f6692097befdae';
+			$http.get(url).then(function(response) {
+        	$scope.info = response.data;
+    	});
+			$scope.title = "Weather";
+
 		});
 
 	</script>
@@ -36,16 +56,17 @@
 		</div>
 		<div class="row menu">
 			<div class="col-12">
-			<a href="#/!main">HOME</a>::
-			<a href="#/!About">About</a>::
-			<a href="#/!Product">Product</a>::
-			<a href="#/!Contact" style="float:right">Contact</a>
+				<a href="#!main">HOME</a>
+				<a href="#!About">About</a>
+				<a href="#!Product">Weather</a>
+				<a href="#!Contact" style="float:right">Contact</a>
 			</div>	
 		</div>
+		<ng-view></ng-view>
 		
 	</div>	
 </div>
-	<ng-view></ng-view>
+	
 	
 
 
